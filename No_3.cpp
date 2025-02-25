@@ -50,7 +50,6 @@ int find_O_n_C(int gr, int (&arr)[N], int x, int (&arr0)[N]) {
 }
 
 int main(){
-    
     std::default_random_engine rng(time(NULL));
     std::uniform_int_distribution <unsigned> dstr(0, MAX);
     int x[N];

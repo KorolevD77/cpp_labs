@@ -4,7 +4,6 @@
 
 #define N 1000000
 #define MAX 1000000
-//#define SEED 1001
 
 
 void ftn(int arr[], int gr, int a) {
