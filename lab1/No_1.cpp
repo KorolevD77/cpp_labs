@@ -7,55 +7,32 @@
 //#define SEED 1001
 
 
-int find_O_n_A(int gr, int (&arr)[N], int x) {
+int find_O_n2(int gr, int (&arr)[N], int x) {
     int rez = 0;
     for(; rez < gr; ++rez) 
-        if(arr[rez] == x){
-            if(rez == 0) return rez;
-        else {
-            std::swap(arr[rez], arr[0]);
-            return rez;
-        }
-    }
+        if(arr[rez] == x) return rez;
     return -1;
 }
 
-int find_O_n_B(int gr, int (&arr)[N], int x) {
-    int rez = 0;
-    for(; rez < gr; ++rez) 
-        if(arr[rez] == x){
-            if(rez == 0) return rez;
-        else {
-            std::swap(arr[rez], arr[rez-1]);
-            return rez;
-        }
+int find_O_logn(int gr, int (&arr)[N], int x) {
+    bool flag = false;
+    int l = 0;  
+    int r = gr-1; 
+    int mid;
+    while ((l <= r) && (flag != true) && r <= gr && l >= 0) {
+        mid = (l + r) / 2;  
+        if (arr[mid] == x) flag = true;  
+        else if (arr[mid] > x) r = mid - 1; 
+        else l = mid + 1;
     }
-    return -1;
-}
-
-int find_O_n2(int gr, int (&arr)[N], int x, int (&arr0)[N]) {
-    int rez = 0;
-    for(; rez < gr; ++rez) 
-        if(arr[rez] == x){
-            arr0[rez]++;
-            if(rez == 0) return rez;
-        else{
-            if(arr0[rez] > arr0[rez-1]){
-                std::swap(arr[rez], arr[rez-1]);
-                std::swap(arr0[rez], arr0[rez-1]);
-                return rez;
-            }
-        }
-    }
+    if(flag) return mid;
     return -1;
 }
 
 int main(){
-    
+    int x[N];
     std::default_random_engine rng(time(NULL));
     int max_rand[5] = {10000, 100000, 500000, 1000000, 1500000};
-    int x[N];
-    int arr0[N] = {0};
 
     for(int j = 0; j < 5; ++j){
         std::cout << std::endl <<  "max: " << max_rand[j] << std::endl;
@@ -64,10 +41,10 @@ int main(){
             for(unsigned i = 0; i < cnt; ++i) x[i] = dstr(rng);
 
             auto begin = std::chrono::steady_clock::now();
-            for(unsigned j = 100000; j != 0; --j)
- 
-            //find_O_n_A(cnt, x, dstr(rng)); //                        тут исследуемая функция
-            find_O_n_A(cnt, x, dstr(rng));
+            for(unsigned j = 1000000; j != 0; --j)
+
+            find_O_logn(cnt, x, dstr(rng)); //                        тут исследуемая функция
+            //find_O_n2(cnt, x, dstr(rng));
 
             auto end = std::chrono::steady_clock::now();
             auto time_span = std::chrono::duration_cast <std::chrono::milliseconds> (end - begin);

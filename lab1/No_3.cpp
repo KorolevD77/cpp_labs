@@ -33,7 +33,7 @@ int find_O_n_B(int gr, int (&arr)[N], int x) {
     return -1;
 }
 
-int find_O_n2(int gr, int (&arr)[N], int x, int (&arr0)[N]) {
+int find_O_n_C(int gr, int (&arr)[N], int x, int (&arr0)[N]) {
     int rez = 0;
     for(; rez < gr; ++rez) 
         if(arr[rez] == x){
