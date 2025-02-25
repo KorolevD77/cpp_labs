@@ -7,7 +7,7 @@
 //#define SEED 1001
 
 
-int find_O_n2(int gr, int (&arr)[N], int x) {
+int find_O_n(int gr, int (&arr)[N], int x) {
     int rez = 0;
     for(; rez < gr; ++rez) 
         if(arr[rez] == x) return rez;
@@ -36,15 +36,15 @@ int main(){
 
     for(int j = 0; j < 5; ++j){
         std::cout << std::endl <<  "max: " << max_rand[j] << std::endl;
-        for(unsigned cnt = 100; cnt <= N; cnt +=  cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100){
+        for(unsigned cnt = 100; cnt <= N; cnt +=  cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100){    //изменяем шаг, чтобы не считать слишком долго  
             std::uniform_int_distribution <unsigned> dstr(0, max_rand[j]);
             for(unsigned i = 0; i < cnt; ++i) x[i] = dstr(rng);
 
             auto begin = std::chrono::steady_clock::now();
-            for(unsigned j = 1000000; j != 0; --j)
+            for(unsigned j = 100000; j != 0; --j)
 
-            find_O_logn(cnt, x, dstr(rng)); //                        тут исследуемая функция
-            //find_O_n2(cnt, x, dstr(rng));
+            //find_O_logn(cnt, x, dstr(rng)); //                        тут исследуемая функция
+            find_O_n(cnt, x, dstr(rng));
 
             auto end = std::chrono::steady_clock::now();
             auto time_span = std::chrono::duration_cast <std::chrono::milliseconds> (end - begin);
@@ -56,7 +56,6 @@ int main(){
     std::cout << std::endl << std::endl;
     for(unsigned cnt = 100; cnt <= N; cnt +=  cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100) std::cout << cnt << ", ";
 
-    //for(unsigned i = 0; i < cnt; ++i) std::cout << x[i] << " ";
 
 
 
