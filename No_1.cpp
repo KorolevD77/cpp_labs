@@ -49,17 +49,10 @@ int main(){
             auto time_span = std::chrono::duration_cast <std::chrono::milliseconds> (end - begin);
             std::cout << time_span.count() << ", ";
         }
-        
     }
     
     std::cout << std::endl << std::endl;
     for(unsigned cnt = 100; cnt <= N; cnt +=  cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100) std::cout << cnt << ", ";
-
-
-
-
-
-
 
     return 0;
 }
