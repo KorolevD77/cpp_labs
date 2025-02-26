@@ -51,7 +51,7 @@ int main(){
     }
     
     std::cout << std::endl << std::endl;
-    for(unsigned cnt = 100; cnt <= N; cnt +=  cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100) std::cout << cnt << ", ";
+    for(unsigned cnt = 100; cnt <= N; cnt += step(cnt)) std::cout << cnt << ", ";
 
 
     return 0;
