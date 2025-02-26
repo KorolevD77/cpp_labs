@@ -6,6 +6,11 @@
 #define MAX 1000000
 
 
+int step(int cnt_0){
+    return cnt_0 >= 1000 ? (cnt_0 >= 10000 ? (cnt_0 >= 100000 ? 100000 : 10000): 1000) : 100;
+}
+
+
 int find_O_n(int gr, int (&arr)[N], int x) {
     int rez = 0;
     for(; rez < gr; ++rez) 
@@ -17,7 +22,7 @@ int find_O_logn(int gr, int (&arr)[N], int x) {
     bool flag = false;
     int l = 0;  
     int r = gr-1; 
-    int mid;
+    int mid = l + (r - l) / 2;
     while ((l <= r) && (flag != true) && r <= gr && l >= 0) {
         mid = (l + r) / 2;  
         if (arr[mid] == x) flag = true;  
@@ -35,7 +40,7 @@ int main(){
 
     for(int j = 0; j < 5; ++j){
         std::cout << std::endl <<  "max: " << max_rand[j] << std::endl;
-        for(unsigned cnt = 100; cnt <= N; cnt +=  cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100){    //изменяем шаг, чтобы не считать слишком долго  
+        for(unsigned cnt = 100; cnt <= N; cnt += step(cnt)){             //изменяем шаг, чтобы не считать слишком долго  
             std::uniform_int_distribution <unsigned> dstr(0, max_rand[j]);
             for(unsigned i = 0; i < cnt; ++i) x[i] = dstr(rng);
 
