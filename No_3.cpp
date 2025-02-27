@@ -7,7 +7,7 @@
 
 
 int step(int cnt_0){
-    return cnt_0 >= 1000 ? (cnt_0 >= 10000 ? (cnt_0 >= 100000 ? 100000 : 10000): 1000) : 100;
+    return (cnt_0 >= 1000 ? (cnt_0 >= 10000 ? (cnt_0 >= 100000 ? 100000 : 10000): 1000) : 100);
 }
 
 int find_O_n_A(int gr, int (&arr)[N], int x) {
