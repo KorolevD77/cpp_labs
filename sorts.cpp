@@ -8,6 +8,8 @@
     слиянием: очев
 */
 
+#define MAX 500
+
 void print(int* a, int size){
     for(int i = 0; i < size; ++i) std::cout << a[i] << " ";
     std::cout << std::endl;
@@ -73,6 +75,17 @@ void merge_sort(int* a, int size){
     merge(a1, a2, a, size/2, size/2 + size%2);
 }
 
+void bucket_sort(int* a, int size){
+    int cnts[MAX] = {0};
+    int n = 0;
+    for(int i = 0; i < size; ++i) ++cnts[a[i]];
+    for(int i = 0; i < MAX; ++i) 
+        for(int j = 0; j < cnts[i]; ++j){
+            a[n] = i;
+            ++n;
+        }
+}
+
 
 
 int main(){
@@ -81,6 +94,7 @@ int main(){
     //bubble_sort(a, 15);
     //vibor_sort(a, 15);
     //vstavka_sort(a, 15); 
+    //bucket_sort(a, 15);
     //merge_sort(a, 15);
 
     print(a, 15);
