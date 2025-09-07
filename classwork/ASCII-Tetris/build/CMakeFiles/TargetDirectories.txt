@@ -1,0 +1,3 @@
+/home/dmitry/cpp/classwork/ASCII-Tetris/build/CMakeFiles/main.dir
+/home/dmitry/cpp/classwork/ASCII-Tetris/build/CMakeFiles/edit_cache.dir
+/home/dmitry/cpp/classwork/ASCII-Tetris/build/CMakeFiles/rebuild_cache.dir
