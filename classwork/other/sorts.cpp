@@ -15,7 +15,7 @@ void print(int* a, int size){
     std::cout << std::endl;
 }
 
-void bubble_sort(int* a, int size){
+void bubble_sort(int* a, int size){ //?
     for(int i = 0; i < size-1; ++i)
         for(int j = i; j < size; ++j)
             if(a[i] > a[j]) std::swap(a[i], a[j]);

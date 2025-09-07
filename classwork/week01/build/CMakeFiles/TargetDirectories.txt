@@ -1,0 +1,3 @@
+/home/dmitry/cpp/classwork/week01/build/CMakeFiles/task3w1.dir
+/home/dmitry/cpp/classwork/week01/build/CMakeFiles/edit_cache.dir
+/home/dmitry/cpp/classwork/week01/build/CMakeFiles/rebuild_cache.dir

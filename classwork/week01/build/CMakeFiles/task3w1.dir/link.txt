@@ -1,0 +1,1 @@
+/usr/bin/g++ CMakeFiles/task3w1.dir/main.cpp.o CMakeFiles/task3w1.dir/src/ans_handler.cpp.o CMakeFiles/task3w1.dir/src/my_math.cpp.o -o ../bin/task3w1 
