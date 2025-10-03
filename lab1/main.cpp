@@ -4,6 +4,7 @@
 struct ADice{
 public: 
     virtual unsigned roll() = 0;
+    virtual ~ADice() = default;
 };
 
 struct Dice: virtual ADice {
@@ -14,6 +15,7 @@ public:
     virtual unsigned roll() override {
         return dstr(reng);
     }
+    virtual ~Dice() = default;
 
 private:
     unsigned max;
@@ -28,6 +30,7 @@ public:
     virtual unsigned roll() override {
         return d1.roll() + d2.roll() + d3.roll();
     }
+    virtual ~ThreeDicePool() = default;
 
 private:
     ADice &d1, &d2, &d3;
@@ -39,6 +42,7 @@ public:
     virtual unsigned roll() override {
         return std::min(d.roll(), d.roll());
     }
+    virtual ~PenaltyDice() = default;
 private:
     ADice &d;
 };
@@ -49,6 +53,8 @@ public:
     virtual unsigned roll() override {
         return std::max(d.roll(), d.roll());
     }
+    virtual ~BonusDice() = default;
+
 private:
     ADice &d;
 };
@@ -59,6 +65,7 @@ public:
     virtual unsigned roll() override {
         return BonusDice::roll() + PenaltyDice::roll();
     }
+    virtual ~DoubleDice() = default;
 };
 
 /*
@@ -69,6 +76,7 @@ struct DoubleDice: ADice {
     virtual unsigned roll() override {
         return bonus.roll() + penalty.roll();
     }
+    virtual ~DoubleDice() = default;
 
 private:
     BonusDice bonus;
