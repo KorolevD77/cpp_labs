@@ -11,7 +11,7 @@ public:
     Dice(unsigned max, unsigned seed):
         max(max), dstr(1, max), reng(seed) {}
 
-    virtual unsigned roll() {
+    virtual unsigned roll() override {
         return dstr(reng);
     }
 
@@ -25,7 +25,7 @@ struct ThreeDicePool: virtual ADice {
 public:
     ThreeDicePool(ADice &_d1, ADice &_d2, ADice &_d3): d1(_d1), d2(_d2), d3(_d3) {}
 
-    virtual unsigned roll() {
+    virtual unsigned roll() override {
         return d1.roll() + d2.roll() + d3.roll();
     }
 
@@ -36,7 +36,7 @@ private:
 struct PenaltyDice: virtual ADice{
 public:
     PenaltyDice(ADice &_d): d(_d) {}
-    virtual unsigned roll() {
+    virtual unsigned roll() override {
         return std::min(d.roll(), d.roll());
     }
 private:
@@ -46,7 +46,7 @@ private:
 struct BonusDice: virtual ADice{
 public:
     BonusDice(ADice &_d): d(_d) {}
-    virtual unsigned roll() {
+    virtual unsigned roll() override {
         return std::max(d.roll(), d.roll());
     }
 private:
@@ -56,7 +56,7 @@ private:
 struct DoubleDice: virtual ADice, BonusDice, PenaltyDice{
 public:
     DoubleDice(ADice &_d): ADice(), BonusDice(_d),  PenaltyDice(_d){}
-    virtual unsigned roll() {
+    virtual unsigned roll() override {
         return BonusDice::roll() + PenaltyDice::roll();
     }
 };
@@ -74,6 +74,9 @@ private:
     BonusDice bonus;
     PenaltyDice penalty;
 };
+
+// Удобнее писать закомменченный вариант, но другой слегка оптимальнее
+
 */
 
 
