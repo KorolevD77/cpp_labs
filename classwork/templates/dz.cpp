@@ -1,4 +1,5 @@
 #include <iostream>
+#include <utility>
 
 
 template<typename T>
@@ -100,6 +101,7 @@ struct are_same<T, U, Args...>{
 
 
 //                                                          №3
+/*
 template<typename T, unsigned int N>
 class Array{
     //...
@@ -113,7 +115,7 @@ template<typename T, unsigned int N>
 unsigned int size(Array<T, N> arr){
     return N;
 }
-
+*/
 
 //                                                          №4
 int foo(int a, int b, int c) {
@@ -127,6 +129,26 @@ float bar(float r) {
 template<typename T, typename... Args>
 auto invoke(T&& func, Args&&... args) {
     return std::forward<T>(func)(std::forward<Args>(args)...);
+}
+
+
+
+//                                          №5
+template<typename T>
+class Array{
+    //...
+};
+
+template<typename T>
+void flatten(const T& elem, std::ostream& out) {
+    out << elem << " ";
+}
+
+template<typename T>
+void flatten(const Array<T>& array, std::ostream& out) {
+    for (const auto& elem : array)
+        flatten(elem, out);
+    
 }
 
 
