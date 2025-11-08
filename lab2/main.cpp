@@ -1,8 +1,8 @@
+#include <cassert>
 #include <iostream>
 
 
 /*
-
 // К заданиям 1, 2
 
 template <typename T>
@@ -140,7 +140,6 @@ public:
 */
 
 
-
 #include <utility>
 
 template<typename T, size_t N>
@@ -156,9 +155,10 @@ private:
     T* data;
     size_type size;
 
-public:
-    Grid() : data(nullptr), size(0) {} 
+    Grid() : data(nullptr), size(0) {}
+    template<typename U, size_t M> friend class Grid;
 
+public:
     Grid(size_type size, const T& value = T()) : size(size) {
         data = new T[size];
         for (size_type i = 0; i < size; ++i) 
@@ -221,9 +221,10 @@ private:
     Grid<T, N-1>* data;
     size_type first_dim;
 
-public:
-    Grid() : data(nullptr), first_dim(0) {} 
+    Grid() : data(nullptr), first_dim(0) {}
+    template<typename U, size_t M> friend class Grid;
 
+public:
     template<typename... Args>
     Grid(Args... args) {
         static_assert(sizeof...(args) == N + 1, "Wrong number of constructor arguments. Shit happens.");
@@ -317,8 +318,6 @@ public:
     size_type get_size() const { return first_dim; }
 };
 
-
-#include <cassert>
 
 int main() {
 Grid<float,3> const g3(2, 3, 4, 1.0f);
