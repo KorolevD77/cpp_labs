@@ -238,6 +238,8 @@ ListPair<T>* copy(ListPair<T> const *src){
 }
 
 */
+
+/*
 #include <map>
 #include <vector>
 #include <algorithm>
@@ -281,3 +283,56 @@ int main() {
 }
 
 
+
+#include<iostream>
+#include<math.h>
+#include<cstdint>
+
+struct Zero { };
+struct One { };
+
+template <typename... Args>
+uint64_t make_number(Args... args){
+    return 0;
+}
+
+template <typename... Args>
+uint64_t make_number(Zero z, Args... args){
+    return make_number(args...);
+}
+
+template <typename... Args>
+uint64_t make_number(One o, Args... args){
+    return (uint64_t)pow(2, sizeof...(args)) + make_number(args...);
+}
+
+uint64_t make_number(One o){
+    return 1;
+}
+uint64_t make_number(Zero o){
+    return 0;
+}
+uint64_t make_number(){
+    return 0;
+}
+
+
+
+int main() {
+   std::cout 
+       << make_number() << ' ' 
+       << make_number(Zero()) << ' ' 
+       << make_number(One()) << ' ' 
+       << make_number(Zero(), One()) << ' ' 
+       << make_number(One(), Zero()) << ' ' 
+       << make_number(Zero(), One(), Zero()) << ' '
+       << make_number(One(), Zero(), One());
+    return 0;
+}*/
+
+#include <iostream>
+
+int main(){
+    std::cerr << "Не удалось открыть файл input.txt" << std::endl;
+    return 0;
+}
